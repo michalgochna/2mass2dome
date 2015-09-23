@@ -1,0 +1,409 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>The 2MASS Redshift Survey -- README</title>
+</head>
+<body>
+<h2>The 2MASS Redshift Survey</h2>
+<h3>Huchra et al., ApJS, in press</h3>
+http://tdc-www.harvard.edu/2mrs/<br>
+catalog version 2.4, 2011 Dec 16<br>
+maintained by Lucas Macri, lmacri@tamu.edu <br>
+<pre>
+*******************************************************************************
+*                                                                             *
+* Any use of the redshift data provided in this catalog is subject to the     *
+* following terms:                                                            *
+*                                                                             *
+* (1) All entries with a bibliographic code that starts with "20112MRS" must  *
+*     be cited as "Huchra, et al., The 2MASS Redshift Survey, ApJS, in press" *
+*                                                                             *
+* (2) All other entries must be cited using their respective bibliographic    *
+*     codes, provided in the column 28 of the catalog.                        *
+*                                                                             *
+* (3) Please do not redistribute any of these files. This will help us ensure *
+*     that all users receive the most up-to-date version. Please redirect any *
+*     requests you receive for this catalog to lmacri@tamu.edu or to          *
+*     http://tdc-www.harvard.edu/2mrs/                                        *
+*                                                                             *
+* (4) Please notify lmacri@tamu.edu of any errors you find, so we may correct *
+*     them in the next version of the catalog. Thanks!                        *
+*                                                                             *
+*******************************************************************************
+</pre>
+<h3>A. 2MASS Redshift Survey input catalog:</h3>
+  The initial selection of sources for this redshift survey was based on the
+2MASS Extended Source Catalog (XSC), provided by Tom Jarrett. We also included
+sources listed in 2MASS Large Galaxy Atlas (LGA), version 2.5, by Jarrett et
+al. (2003AJ....125..525J).<br>
+<br>
+  The 2MASS photometric pipeline performed a variety of magnitude measurements
+for each band. We selected the isophotal magnitudes, measured at the K=20
+mag/sq arcsec isophote, as our primary set of magnitudes. We also include the
+"total magnitudes" derived by the pipeline, but do not use them for our sample
+selection. The columns extracted from the 2MASS XSC photometry table are listed
+below. Please refer to the following links for details of the 2MASS XSC and LGA
+photometry:<br>
+<br>
+<a href="http://irsa.ipac.caltech.edu/applications/2MASS/PubGalPS/XSC_key.html">http://irsa.ipac.caltech.edu/applications/2MASS/PubGalPS/XSC_key.html</a><br>
+<a href="http://irsa.ipac.caltech.edu/applications/2MASS/LGA/">http://irsa.ipac.caltech.edu/applications/2MASS/LGA/</a><br>
+<br>
+  We applied an extinction correction using the maps of Schlegel, Finkbeiner &
+Davis (1998ApJ...500..525S). Our tables report the extinction-corrected 2MASS
+magnitudes, and we also provide the value of E(B-V) from SFD98 which we used
+for the corrections. <br>
+<br>
+  We selected 45,086 sources which met the following criteria:<br>
+<ol>
+<li>Ks     <=11.75 mag and detected at H-band<br>
+<li>E(B-V) <  1.0  mag <br>
+<li>|b|    >  5.0  deg for 30 < l < 330 ; |b| > 8.0 deg otherwise <br>
+</ol>
+ We rejected 324 sources deemed to be of galactic origin (multiple stars,
+planetary nebulae, HII regions), image artifacts, and pieces of galaxies
+detected as separate sources by the 2MASS pipeline. These objects are listed in
+the file "2mrs_1175_rej.dat", located in the "add_rej" subdirectory.<br>
+<br>
+  Additionally, we flagged 314 <i>bona fide</i> galaxies with compromised photometry
+for reprocessing. Some have bright stars very near the nucleus which were not
+detected by the pipeline. Some are in regions of high stellar density and
+their center positions and/or isophotal radii have been incorrectly measured by
+the pipeline. Some are very close galaxy pairs or multiples.<br>
+<br>
+  72 of the flagged galaxies have been kindly reprocessed by Tom Jarrett at the
+time of submission for publication. The original XSC entries are listed in the
+file "2mrs_1175_rep.dat", while the updated entries are listed in the file
+"2mrs_1175_add.dat". Note that the latter file has 74 entries because two close
+galaxy pairs have been split into individual galaxies.<br>
+<br>
+  87 of the flagged galaxies are not severely affected by the nearby stars,
+although they could benefit from reprocessing at a later date. They have been
+left in the catalog with their original magnitudes for now, and are listed in
+the file "2mrs_1175_flg.dat"<br>
+<br>
+ 165 of the flagged galaxies are severely affected by the nearby stars, but
+have not been reprocessed yet. They have been removed from the catalog and
+are listed in the file "2mrs_1175_flr.dat"<br>
+<br>
+  Our final input catalog (after the additions and deletions listed above)
+contained 44,599 entries. In this work, we present redshifts for 43,533 of
+these, or 97.6% of the sample.<br>
+
+<h3>B. 2MASS Redshift Survey catalog contents:</h3>
+
+  The main redshift catalog is in the "catalog/" subdirectory. Additional
+redshifts for fainter galaxies can be found in the "extra/" subdirectory.<br>
+<br>
+  This distribution contains both space-delimited ASCII and FITS binary table
+versions of the catalog, with extensions ".dat" and ".fits" respectively.<br>
+<br>
+  2MASS galaxies that meet the selection criteria listed above and have a
+measured redshifts are listed in the files called "2mrs_1175_done.[dat,fits]"
+(43,533 entries)<br>
+<br>
+  2MASS galaxies that meet the selection criteria listed above but do not have
+a measured redshift are listed in the files called "2mrs_1175_nocz.[dat,fits]"
+(1,066 entries). If you have observed one of these galaxies please let us know!<br>
+<br>
+  Below is a description of the columns in the catalog. Columns 1-3, 6-17, and
+19-22 contain information obtained from the 2MASS XSC photometry tables. The
+original names of these columns in the XSC database are given in brackets. The
+remaining columns contain information added by us as part of this work. <br>
+<ol>
+<li> ID    : 2MASS ID [XSC: designation]<br>
+<li> RAdeg : RA  (J2000.0) in decimal degrees [XSC: sup_ra]<br>
+<li> DECdeg: DEC (J2000.0) in decimal degrees [XSC: sup_dec]<br>
+<li> l     : Galactic longitude [calculated by us]<br>
+<li> b     : Galactic latitude  [calculated by us]<br>
+<li> k_c   : Ks isophotal magnitude, extinction corrected [XSC: k_m_k20fe]<br>
+<li> h_c   : same for H [XSC: h_m_k20fe]<br>
+<li> j_c   : same for J [XSC: j_m_k20fe]<br>
+<li> k_tc  : "Total" magnitude, extinction corrected [XSC: k_m_ext]<br>
+<li> h_tc  : same for H [XSC: h_m_ext]<br>
+<li> j_tc  : same for J [XSC: j_m_ext]<br>
+<li> e_k   : Uncertainty in k_c [XSC: k_msig_k20fe]<br>
+<li> e_h   : same for h_c [XSC: h_msig_k20fe]<br>
+<li> e_j   : same for j_c [XSC: j_msig_k20fe]<br>
+<li> e_kt  : same for k_tc [XSC: k_msig_ext]<br>
+<li> e_ht  : same for h_tc [XSC: h_msig_ext]<br>
+<li> e_jt  : same for j_tc [XSC: j_msig_ext]<br>
+<li> e_bv  : E(B-V) from Schlegel, Finkbeiner & Davis (1998ApJ...500..525S) <br>
+<li> r_iso : log10 of K=20 mag/sq arcsec isophotal radius (in arcsec) [XSC: r_k20fe]<br>
+<li> r_ext : same for "total magnitude" extrapolation radius [XSC: r_ext]<br>
+<li> b/a   : axial ratio from co-added JHKs images [XSC: sup_ba]<br>
+<li> flgs  : photometry confusion flags from 2MASS XSC database [XSC:
+cc_flg, k_flg_k20fe, h_flg_k20fe, j_flg_k20fe]. A "Z" in the first
+column indicates that we have used magnitudes from the 2MASS LGA. <br>
+<li> type  : galaxy type, following ZCAT convention (see below) <br>
+<li> ts    : source of type (JH=John Huchra; ZC=ZCAT; ND=NED; NN=not available) <br>
+<li> v     : redshift <br>
+<li> e_v   : uncertainty in redshift, when available <br>
+<li> c     : code for input catalog containing redshift (see below for details) <br>
+<li> v_src : bibliographic code for source of redshift (follows NED convention) <br>
+<li> CAT_ID: name of galaxy in input redshift catalog <br>
+</ol>
+<h3>C. Sources of redshifts</h3>
+
+  All 2MASS XSC entries meeting the selection criteria listed in (A) were used
+as an input list to query the following databases:<br>
+<ul>
+<li>the Sloan Digital Sky Survey (data release 8)
+<li>the 6dF Galaxy Survey (data release 3) 
+<li>the NASA Extragalactic Database (NED) 
+<li>John Huchra's personal compilation of redshifts (ZCAT)
+</ul>
+ Queries against earlier versions of these databases were conducted throughout
+the duration of this survey, starting in early 1998. Galaxies without a match
+in any database at the time of the query were targeted for observation at the
+Fred L. Whipple Observatory 1.5-m telescope, the Cerro Tololo Interamerican
+Observatory 1.5-m telescope, and the McDonald 2.1-m telescope. Observations
+were conducted between 1998 July and 2011 January.<br>
+<br>
+  The provenance of redshifts used in this catalog is detailed below. In the
+case of multiple redshifts for a given galaxy, we gave preference to our own
+observations (codes C/D/F below) over any previously published value. However,
+we list the alternative redshifts in the sub-directory "cat_diff" for the
+benefit of users who wish to give preference to other catalogs or who wish to
+combine the measurements into a mean value.
+<br>
+  The one-character codes listed below are used in column 27 of the catalog (see
+above).  The values in brackets indicate the number of redshifts associated
+with each source.<br>
+<ul>
+
+  <li>N [12,694]: Previously-published redshifts listed in NED, found by
+  performing a "Query by Name" using the 2MASS XSC IDs. In the case of galaxies
+  with more than one redshift measurement, the "default" value listed by NED was
+  used.
+
+  <li>6 [11,763]: the 6dF Galaxy Survey, data release 3 (Jones et al. 2009),
+  from <a href="http://www-wfau.roe.ac.uk/6dFGS/">
+  http://www-wfau.roe.ac.uk/6dFGS/6dFGSzDR3.txt.gz</a> . We selected galaxies
+  with redshifts of quality level 3 or 4 (column 16 of their catalog), observed
+  with the 6dF instrument only (code 126 in column 17 of their catalog).
+
+  <li>F [7,590]: redshifts obtained as part of the 2MRS project at the FLWO
+  1.5-m telescope.
+
+  <li>S [7,069]: the Sloan Digital Sky Survey, data release 8 (Aihara et al.
+  2011), from <a href="http://data.sdss3.org/sas/dr8/common/sdss-spectro/redux/">
+  http://data.sdss3.org/sas/dr8/common/sdss-spectro/redux/galSpecInfo-dr8.fits</a>.
+
+  <li>C [3,293]: redshifts obtained as part of the 2MRS project at the CTIO
+  1.5-m telescope.
+
+  <li>O [749]: redshifts listed in ZCAT. This includes 567 entries with no
+  redshifts in NED, but with a redshift in ZCAT, as well as 77 entries for which
+  the ZCAT redshift was chosen over the NED redshift.
+
+  <li>M [258]: Previously-published redshifts listed in NED. Unlike code "N"
+  above, these redshifts are not the default value found in NED when querying
+  the database by name using the 2MASS XSC ID.
+
+  In 226 of these cases, the redshifts were found by performing a "Query by Position" with a tolerance radius of 1.3 arcminutes. Most of these objects are already "associated" (in NED terms) with the 2MASS object but have not yet been merged into a single entry.
+
+  In the other 32 cases, we have chosen to adopt an alternative redshift measurement, already listed in NED and linked to the 2MASS ID. This alternative measurement is in better agreement with other published values also listed in NED, or it has a significantly smaller uncertainty than the default NED value.
+
+  <li>D [117]: redshifts obtained as part of the 2MRS project at McDonald Observatory (2.1-m telescope or HET)
+</ul>
+
+<h3>D. Details of adopted redshifts that are not the NED default value</h3>
+
+  The files included in the subdirectory "cat_diff" contain lists of the 2MASS
+XSC entries for which we did not use the default redshift provided by SDSS DR8,
+6dF DR3, or NED at the time of our queries. The contents of these files are as
+follows:
+<ul>
+<li>2mrs_1175_6dfdiff_cfd.dat - 2MRS observations of galaxies which have a previously published redshift listed in 6dF DR3 (codes "C"/"D"/"F" above). [N=2,382]
+<li>2mrs_1175_sl8diff_cfd.dat - 2MRS observations of galaxies which have a previously published redshift listed in SDSS DR8 (codes "C"/"D"/"F" above). [N=879]
+<li>2mrs_1175_neddiff_cfd.dat - 2MRS observations of galaxies which have a previously published redshift listed in NED (codes "C"/"D"/"F" above). [N=406]
+<li>2mrs_1175_neddiff_cfo.dat - 2MRS observations of galaxies attributed in NED to 2008ApJ...685.1320C, now listed with updated bibliographic codes and redshift uncertainties when available. [N=178]
+<li>2mrs_1175_neddiff_del.dat - NED redshifts discarded for being erroneous; no other redshift in the literature. [N=3]
+<li>2mrs_1175_neddiff_m1.dat  - The NED query by name, using the 2MASS XSC ID, did not return a match, but a query by position (tolerance=1.3') returned a match. [N=226]
+<li>2mrs_1175_neddiff_m2.dat  - NED entries with multiple redshift measurements. Default NED redshift in poor agreement with other published measurements, or has a much larger uncertainty.  Alternative NED redshift used. [N=32]
+<li>2mrs_1175_neddiff_o1.dat  - NED entries without redshift information, but ZCAT contained a redshift (either from literature or from Huchra's earlier unpublished observations) [N=567]
+<li>2mrs_1175_neddiff_o2.dat  - NED entries with redshift measurements, superceded by ZCAT entries (either published measurements or Huchra's earlier unpublished observations) [N=76]
+</ul>
+<h3>E. 2MRS "bibcodes"</h3>
+
+  As stated in the terms of use at the top of this file, any redshift with a
+bibliographic code starting with "20112MRS" should be cited as "Huchra, et al.,
+The 2MASS Redshift Survey, in preparation". There are several variants of this
+code in the data files, primarily meant for internal use by 2MRS project
+members. Here we provide additional information on these codes for those
+readers who might be interested.<br>
+<ul>
+<li>20112MRS.FLWO.0000H: Observed at the Fred L. Whipple Observatory 1.5-m telescope with the FAST spectrograph. Spectrum reduced by the standard SAO TDC FAST pipeline.
+<li>20112MRS.CTIO.0000H: Observed at the Cerro Tololo Interamerican Observatory 1.5-m telescope with the R-C spectrograph. Spectrum reduced by Lucas Macri using standard IRAF routines.
+<li>20112MRS.McDo.0000H: Observed at the McDonald Observatory 2.1-m telescope with the es2 Cassegrain Spectrometer. Spectrum reduced by Jeff Mader & Teddy George using standard IRAF routines.
+<li>20112MRS.JPH..0000H: Observed as part of one of John Huchra's projects prior to the start of the 2MRS, but never published.  Most (but not all) were likely observed at the Fred L. Whipple Observatory 1.5-m telescope with the FAST spectrograph. No further information is available on the provenance of these redshifts.
+<li>20112MRS.MMT..0000H: Observed as part of one of John Huchra's projects prior to the start of the 2MRS, but never published. Observed at the Multiple Mirror Telescope with the Blue Channel or Red Channel spectrographs. Spectrum reduced by the standard SAO TDC pipeline. SAO TDC archive number provided when available (in files within "cat_diff" directory).
+<li>20112MRS.ZMA..0000H: Observed as part of one of John Huchra's projects prior to the start of the 2MRS, but never published. Observed at the Fred L. Whipple Observatory 1.5-m telescope with the Z-machine spectrograph. Spectrum reduced by the standard SAO TDC pipeline. SAO TDC archive number provided when available (in files within "cat_diff" directory). <br>
+</ul>
+<h3>F. Galaxy types</h3>
+
+  Galaxy types are provided for a virtually complete sub-sample of 20,860
+objects with K<=11.254 mag and |b|>10 deg. 5,729 galaxies in this sub-sample
+had never been classified and thus were visually inspected and typed by John
+Huchra. These galaxies are identified with "JH" in the "type source" column
+(column 24). Galaxy types for the remainder of the sub-sample, and for an
+additional 5,064 fainter objects were already stored in ZCAT and have been
+propagated into the 2MRS catalog. These are identified with "ZC" in the "type
+source" column.<br>
+<br>
+Galaxy types are encoded in column 23 following the ZCAT convention. The first
+two characters are numeric and correspond to the following:<br>
+
+<ul>
+<li> -9: QSO/AGN
+<li> -7: Unclassified Elliptical
+<li> -6: Compact Elliptical
+<li> -5: E, and  dwarf E
+<li> -4: E/SO
+<li> -3: L-, SO-
+<li> -2: L, SO
+<li> -1: L+, SO+
+<li>  0: SO/a, SO-a
+<li>  1: Sa
+<li>  2: Sab
+<li>  3: Sb
+<li>  4: Sbc
+<li>  5: Sc
+<li>  6: Scd
+<li>  7: Sd
+<li>  8: Sdm
+<li>  9: Sm, Magellanic Spiral 
+<li> 10: Im, Irr I, Magellanic Irregular, Dwarf Irregular
+<li> 11: Compact Irregular, Extragalactic HII Region
+<li> 15: Peculiar, Unclassifiable
+<li> 16: Irr II
+<li> 19: Unclassified galaxy (visually confirmed to be a galaxy, but not typed)
+<li> 20: S..., Sc-Irr, Unclassified Spiral
+<li> 98: Galaxy that has never been visually examined.
+</ul>
+The next three characters are alphabetical and correspond to the following:<br>
+<ul>
+<li> Bar type:
+<ul>
+<li>A: Unbarred
+<li>X: Mixed~type
+<li>B: Barred
+</ul>
+<li>Luminosity classes (for spirals and irregulars):<br>
+<ol>
+<li>I      
+<li>I-II   
+<li>II     
+<li>II-III
+<li>III    
+<li>III-IV 
+<li>IV     
+<li>IV-V   
+<li>V    
+</ol>
+<li>Peculiarities:<br>
+<ul>
+<li>D: Double or Multiple
+<li>P: Peculiar
+<li>R: Outer Ring
+<li>r: Inner Ring
+<li>s: S-shaped
+<li>t: Mixed (Inner ring/S-shaped)
+<li>T: Pseudo outer ring
+<li>/: Spindle
+</ul>
+</ul>
+Objects removed from the original XSC catalog (2mrs_1175_rej.dat) are typed
+as follows:<br>
+<ul>
+<li> 21: Galaxy with bright star near nucleus -- photometry and/or redshift are unreliable
+<li> 22: Galaxy with compromised 2MASS XSC magnitudes -- flagged for reanalysis
+<li> 24: Open Star Cluster
+<li> 25: Plate Flaw, Star, etc. misclassified as galaxy! 
+<li> 26: T Tauri star (from IRAS Surveys) 
+<li> 27: Globular Cluster 
+<li> 30: Planetary Nebula 
+<li> 31: Dark Cloud (no object visible on POSS) 
+<li> 32: HII region in external galaxy 
+<li> 33: Reflection Nebulosity 
+<li> 35: HI cloud / High Velocity Clouds (HVC) 
+<li> 40: Piece of galaxy
+</ul>
+
+<h3>G. Additional redshifts for 2MASS galaxies outside the survey limits</h3>
+
+  Redshifts for an additional 196,963 2MASS galaxies beyond the main catalog
+limits are tabulated in files located in the "extra" subdirectory. This catalog
+is provided in both ASCII and FITS binary table format in the files called
+"2mrs_extra_done.[dat,fits]".  The format of this catalog is similar to the
+main catalog, but contains an additional 3 columns with the following
+information:<br>
+
+<ol start="30">
+<li> RAdlt: delta-RA (in arcseconds) between the 2MASS galaxy position and the reported position of its matched counterpart in a redshift catalog
+<li> DCdlt: delta-Dec (in arcseconds), same as column #30
+<li> tl: matching tolerance for the catalog containing this redshift
+</ol>
+
+  The provenance of redshifts used in this catalog is detailed below. In the
+case of multiple redshifts for a given galaxy, we gave preference to our own
+observations (codes C/D/F below) over any previously published value. However,
+we list the alternative redshifts in the sub-directory "cat_diff" for the
+benefit of users who wish to give preference to other catalogs or who wish to
+combine the measurements into a mean value.
+
+<ul>
+<li> S [90,503]: the Sloan Digital Sky Survey, data release 8 (Aihara et al.
+  2011), from <a href="http://data.sdss3.org/sas/dr8/common/sdss-spectro/redux/">
+  http://data.sdss3.org/sas/dr8/common/sdss-spectro/redux/galSpecInfo-dr8.fits</a>.
+<li> 6 [77,945]: the 6dF Galaxy Survey, data release 3 (Jones et al. 2009), 
+  from <a href="http://www-wfau.roe.ac.uk/6dFGS/">
+  http://www-wfau.roe.ac.uk/6dFGS/6dFGSzDR3.txt.gz</a> . We selected galaxies
+  with redshifts of quality level 3 or 4 (column 16 of their catalog), observed
+  with the 6dF instrument only (code 126 in column 17 of their catalog).
+<li> O [25,552]: redshifts listed in ZCAT -- see important note below!
+<li> F [2,596]: redshifts obtained as part of the 2MRS project at the FLWO 1.5-m telescope.
+<li> C [238]: redshifts obtained as part of the 2MRS project at the CTIO 1.5-m telescope.
+<li> D [50]: redshifts obtained as part of the 2MRS project at McDonald Observatory (2.1-m telescope or HET)
+<li> N [77]: Previously-published redshifts listed in NED, found by performing a "Query by Name" using the 2MASS XSC IDs. In the case of galaxies with more than one redshift measurement, the "default" value listed by NED was used. This excludes any redshifts from 6dFGS or SDSS.
+<li> M [2]: Previously-published redshifts listed in NED. Unlike code "N" above, these redshifts are not the default value found in NED when querying the database by name using the 2MASS XSC ID. The redshifts were found by performing a "Query by Position" with a tolerance radius of 1.3 arcminutes.  These objects are already "associated" (in NED terms) with the 2MASS object but have not yet been merged into a single entry.
+</ul>
+<b>PLEASE NOTE</b>: 25,552 entries in this "extra" catalog have an "O" in column
+27, indicating that the redshift information was obtained by matching the 2MASS
+XSC against ZCAT. These redshifts were not verified against NED.  Some redshifts
+from older publications listed in ZCAT are known to have typos in their
+coordinates and/or redshifts, resulting in bogus matches. Users are encouraged
+to double-check the validity of these redshifts against NED and report any
+discrepancies to lmacri@tamu.edu<br>
+<br>
+Additionally, very few of these galaxies were visually inspected to ensure
+their photometry was not compromised by stars, image defects or pipeline errors
+(see discussion on rejected sources in [A] above). This could be particularly
+important for objects at low galactic latitude. A few sources that were
+rejected are listed in "2mrs_extra_rej.dat", some that were flagged are listed
+in "2mrs_extra_rej.dat" and a small number that were reprocessed by Tom Jarrett
+can be found in "2mrs_extra_add.dat".<br>
+<br>
+The files included in the subdirectory "cat_diff" contain lists of the 2MASS
+XSC entries for which we did not use the default redshift provided by SDSS DR8,
+6dF DR3, or NED at the time of our queries. The contents of these files are as
+follows:<br>
+<ul>
+<li> 2mrs_extra_sl8diff_cfd.dat - 2MRS observations of galaxies which have a previously published redshift listed in SDSS DR8 (codes "C"/"D"/"F" above). [N=1,061]
+<li> 2mrs_extra_6dfdiff_cfd.dat - 2MRS observations of galaxies which have a previously published redshift listed in 6dF DR3 (codes "C"/"D"/"F" above). [N=129]
+<li> 2mrs_extra_neddiff_m1.dat  - The NED query by name, using the 2MASS XSC ID, did not return a match, but a query by position (tolerance=1.3') returned a match. [N=2]
+</ul>
+  Additional 2MRS "bibcodes" for galaxies in the "extra" sample:
+<ul>
+<li>20112MRS.Arec.0000H: Observed by Huchra or collaborators at Arecibo
+<li>20112MRS.Keck.0000H: Observed by Huchra at Keck Observatory
+<li>20112MRS.KPPA.0000H: Observed by Huchra at Kitt Peak and Palomar Observatories
+</ul>
+<h3>H. Redshifts for additional galaxies not listed in the 2MASS XSC</h3>
+
+As part of our observations, we obtained redshifts for 14 galaxies located in
+close proximity to 2MASS sources but not actually listed in the XSC. Those
+redshifts are presented in the file "2mrs_nocat_done.dat" in the "extra/"
+subdirectory. We generated pseudo-2MASS IDs for these objects based on their
+coordinates. Since these galaxies are not listed in the XSC, we are unable to
+report any magnitude measurements for them.<br>
+</body> </html>
