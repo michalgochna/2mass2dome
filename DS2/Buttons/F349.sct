@@ -1,0 +1,91 @@
+﻿;----------------------------------------------------------------------
+; Script number = F349
+; Title         = " VOT redshift"
+; Color         = "255,215,0"
+; Created on    : 2014-12-11 20:29 +01:00
+; Modified      : 2015-09-23 21:05 Z
+; Version       : 2.4
+; Created by    : Sky_Skan
+; Keywords      : 
+; Description   : 2mrs catalog VOT
+;----------------------------------------------------------------------
+;
+
+
+;1. Add the particle table object to the scene.
+'Load Particle Table Object and set unit to Parsec and make invisible
+	Scene Add Object "ParticleTableObject2" "Sidereal" PARTICLE_TABLE
+	Scene "ParticleTableObject2" Unit mpc
+	Scene "ParticleTableObject2" View 0 0
+	
+;2. Use the “AddColumn” command for each VO Table column to be processed.
+'the arguments are <AddColumn> <column_name> <column_type>, where column_type is optional
+'Column_name matches a FIELD.name in the VOT we want to read from the VO Table
+'column_type is one of the following: “RA”, “DEC”, “VMAG”, “B-V” , “DIST”, “PLX” 
+'DIST and PLX are both ways of specifying the distance, with DIST having priority over PLX 
+	
+'Specify the columns we want to read from the VO Table
+	Scene "ParticleTableObject2" AddColumn "ra"      "RA" 
+	Scene "ParticleTableObject2" AddColumn "dec"     "DEC" 
+	Scene "ParticleTableObject2" AddColumn "mag"   "VMAG"
+	Scene "ParticleTableObject2" AddColumn "color" "B-V"
+	Scene "ParticleTableObject2" AddColumn "dist" "DIST"  
+'	Scene "ParticleTableObject2" AddColumn "st_plx"  "PLX" 
+
+'Labels	
+'	Scene "ParticleTableObject2" AddColumn "pl_hostname"  
+'	Scene "ParticleTableObject2" AddLabel "pl_hostname"  0.0f 'Label Names fade down to 0 to make them invisible
+	
+
+;4. Once the columns have been added to the Particle Table Object, the VO Table file can be read with the GetVOTable command.
+'the only argument here is the filename	
+  
+	Scene "ParticleTableObject2" GetVOTable "new_votable.vot"   
+	
+;6. Basic Partiview style CMaps can be used to provide a color range with GetCMap
+'Optional Partiview style color map file
+	Scene "ParticleTableObject2" GetCMap "redshift.cmap"	
+
+;6a. Set Cmap to a column name. The column that provides the data that will be mapped is specified with SetCMap
+'he first argument is the column name, and the second argument “exact” is optional
+'as in   Scene "ParticleTableObject2" SetCMap "st_dist" "exact"
+'"exact" means to use the data as the direct index into the table (the index is 0 based)
+'omitting “exact” allows the entire range of data to be mapped to the range of the table
+	
+	Scene "ParticleTableObject2" SetCMap "color" "exact"
+	
+;6b.  The range on which the colors are mapped can be given by a separate command, SetCMapDataMinMax.  
+'If this command is not used, the min and the max are determined by the data in the table, 
+'which may give unintended results if there are any extreme values present.  
+'Particles with values outside the min and max are clamped to the corresponding min and max in the color map.
+'in this example, particles with distances from 1 to 1000 are mapped to the color table specified by the file rainbow.cmap	
+	
+'	Scene "ParticleTableObject2" SetCMapDataMinMax 5000 12000
+	
+	
+;7.The ParticleSystem requires its own .xml file to initialize its properties	
+	Scene "ParticleTableObject2" CreateParticleSystem "table.xml"
+
+	
+	
+;---------------------------------------------------------------------------		
+;--------------------------------------------------
+;---------------------
+	ButtonText "Show Particle"
+Stop
+	Scene "ParticleTableObject2" View 2 100
+
+;8. Commands also exist to adjust the visibility and the size/brightness of the particles:
+;--------------		
++2	ButtonText "Brightness up"
+Stop
+	Scene "ParticleTableObject2" SetSizeScale 8.0f	'the size is like the brightness
+	
+
+;--------------------------------------------------------------------------------------------
+   	ButtonText "Remove Particle"
+Stop
+	Scene "ParticleTableObject2" view 2 0
++2	Scene Remove "ParticleTableObject2"
+
+	
